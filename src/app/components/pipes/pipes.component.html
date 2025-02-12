@@ -1,0 +1,64 @@
+<!-- pipe is used to 
+1. format data
+2. transform data
+3. filter data
+4. sort data -->
+
+<h1>Piping:</h1>
+<table border="1">
+    <tr>
+        <th>pipes</th>
+        <th>Before piping</th>
+        <th>After piping</th>
+    </tr>
+    <tr>
+        <td>Date:</td>
+        <td>{{date}}</td>
+        <td>{{date | date : 'dd/MM/yyyy'}}</td>
+    </tr>
+    <tr>
+        <td>Short Time: </td>
+        <td>{{date}} </td>
+        <td>{{date | date : 'shortTime'}}</td>
+    </tr>
+    <tr>
+        <td>Medium Date:</td>
+        <td>{{date}}</td>
+        <td>{{date | date : 'medium'}}</td>
+    </tr>
+    <tr>
+        <td>Full Date:</td>
+        <td>{{date}} </td>
+        <td>{{date | date : 'fullDate'}}</td>
+    </tr>
+    <tr>
+        <td>lowercase: </td>
+        <td>{{stringTransform}} </td>
+        <td>{{stringTransform | lowercase}}</td>
+    </tr>
+    <tr>
+        <td>titlecase: </td>
+        <td>{{stringTransform}} </td>
+        {{stringTransform | titlecase}}
+    </tr>
+    <tr>
+        <td>currency: </td>
+        <td>{{currency}} </td>
+        <td>{{currency | currency : '$'}}</td>
+    </tr>
+    <tr>
+        <td>currency: </td>
+        <td>{{currency}} </td>
+        <td>{{currency | currency : 'NPR'}}</td>
+    </tr>
+    <tr>
+        <td>percentage:</td>
+        <td>{{percentage}}</td>
+        <td>{{percentage | percent}}</td>
+    </tr>
+    <tr>
+        <td>slice:</td>
+        <td>{{stringTransform}}</td>
+        <td>{{stringTransform | slice : 0 : 5}}</td>
+    </tr>
+</table>

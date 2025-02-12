@@ -1,0 +1,14 @@
+.even {
+    background-color: #729fe4;
+    color: white;
+}
+
+.odd {
+    background-color: #d84141;
+    color: white;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}

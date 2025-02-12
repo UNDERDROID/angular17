@@ -1,0 +1,50 @@
+<!-- 
+ Structural diretives can change the structure of the DOM
+ Structural directives starts with * (asterisk) symbol.
+
+Attributes directives can change the appearance or behavior 
+of an element 
+
+ *ngIf structural directive is used to show the 
+content of the div only if the condition is true.
+If the condition is false 
+it removes the div element from the DOM as well -->
+<h1> Structural Directives:</h1>
+<h2>*ngIf:</h2>
+<div *ngIf="hotel1.available>0">
+    <p>{{hotel1.available}} rooms available!</p>
+
+
+    <h2>*ngFor:</h2>
+    <table class="table">
+        <tr>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Price</th>
+            <th>Amenities</th>
+        </tr>
+
+        <!-- ng for iterates over the array (i.e roomList) and creates
+tr and td element for each room object in the array. -->
+        <tr [ngClass]="e ?'even':'odd'" *ngFor="let room of roomList ; 
+        let e=even; let o=odd">
+            <td>{{e ? "Even" : "Odd"}}</td>
+            <td>{{room.roomNumber}}</td>
+            <td>{{room.roomType}}</td>
+            <td>{{room.roomPrice}}</td>
+            <td>{{room.amenities}}</td>
+            <!-- <td *ngFor="let amenity of room.amenities">{{amenity}}</td> -->
+
+        </tr>
+    </table>
+</div>
+
+<!-- ngSwitch directive is used to display different 
+ content based on the value of a variable. -->
+<h2>*ngSwitch:</h2>
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'admin'">Welcome Admin
+    </div>
+    <div *ngSwitchCase="'user'">Welcome User</div>
+</div>
