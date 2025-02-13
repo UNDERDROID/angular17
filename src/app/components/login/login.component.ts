@@ -16,7 +16,7 @@ export class LoginComponent {
   login() {
     if (this.username === 'admin' && this.password === 'admin') {
       this.authService.login(this.username);
-      this.router.navigate(['/rooms']);
+      this.router.navigate(['/pipes']);
       this.authService.setAuthToken('authToken');
     } else {
       alert('Login Failed');
