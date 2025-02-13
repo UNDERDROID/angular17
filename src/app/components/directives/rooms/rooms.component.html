@@ -9,6 +9,7 @@ of an element
 content of the div only if the condition is true.
 If the condition is false 
 it removes the div element from the DOM as well -->
+
 <h1> Structural Directives:</h1>
 <h2>*ngIf:</h2>
 <div *ngIf="hotel1.available>0">
@@ -48,3 +49,5 @@ tr and td element for each room object in the array. -->
     </div>
     <div *ngSwitchCase="'user'">Welcome User</div>
 </div>
+
+<button (click)="logout()">Logout {{username}}</button>

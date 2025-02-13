@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Rooms, RoomList } from './rooms';
+import { AuthService } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -8,7 +10,7 @@ import { Rooms, RoomList } from './rooms';
   standalone: false
 })
 export class RoomsComponent {
-
+  constructor(private authService: AuthService, private router: Router) { }
   role: string = 'admin';
 
   //Hotel Object
@@ -39,4 +41,9 @@ export class RoomsComponent {
       amenities: ['TV', 'AC', 'Wi-Fi']
     }
   ]
+  username: string = this.authService.username;
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
+  }
 }
