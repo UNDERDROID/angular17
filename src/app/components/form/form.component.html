@@ -1,0 +1,22 @@
+<p>form works!</p>
+<button (click)="toggleVisibility()">Toggle Form</button>
+<ng-container *ngIf="isVisible">
+    <div class="border border-primary rounded p-4" style="max-width: 400px; margin: 0 auto;">
+        <h1>Form</h1>
+        <form (ngSubmit)="addUser()">
+            <div class="mb-3">
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="firstName" name="first-name">
+            </div>
+            <div class="mb-3">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="lastName" name="last-name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</ng-container>

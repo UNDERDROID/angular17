@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { FormComponent } from './components/form/form.component';
 
 
 
@@ -18,6 +20,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LifecycleComponent,
     HomeComponent,
     LoginComponent,
+    RxjsComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
