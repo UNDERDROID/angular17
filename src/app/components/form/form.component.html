@@ -3,20 +3,46 @@
 <ng-container *ngIf="isVisible">
     <div class="border border-primary rounded p-4" style="max-width: 400px; margin: 0 auto;">
         <h1>Form</h1>
-        <form (ngSubmit)="addUser()">
+        <form #myForm="ngForm" (ngSubmit)="addUser()">
             <div class="mb-3">
                 <label for="first-name" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="firstName" name="first-name">
+
             </div>
             <div class="mb-3">
                 <label for="last-name" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="lastName" name="last-name">
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
-            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </ng-container>
+
+<h2>Template driven form</h2>
+<div class="border border-primary rounded p-4" style="max-width: 400px; margin: 0 auto;">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div class="form-group">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required
+                minlength="3" #usernameModel="ngModel" />
+            <!-- Validation messages -->
+            <div *ngIf="usernameModel?.invalid && (usernameModel?.touched || form.submitted)">
+                <div *ngIf="usernameModel?.errors?.['required']">Username is required.</div>
+                <div *ngIf="usernameModel?.errors?.['minlength']">Username must be at least 3 characters long.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" class="form-control" name="password" [(ngModel)]="password" required
+                minlength="6" #passwordModel="ngModel" />
+            <!-- Validation messages -->
+            <div *ngIf="passwordModel?.invalid && (passwordModel?.touched || form.submitted)">
+                <div *ngIf="passwordModel?.errors?.['required']">Password is required.</div>
+                <div *ngIf="passwordModel?.errors?.['minlength']">Password must be at least 6 characters long.</div>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
+    </form>
+</div>

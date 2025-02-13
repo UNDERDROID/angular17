@@ -8,9 +8,19 @@ import { user } from './user';
 })
 export class FormComponent {
   isVisible: boolean = true;
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+
+  username: string = '';
+  password: string = '';
 
   toggleVisibility() {
     this.isVisible = !this.isVisible;
+  }
+
+  onSubmit() {
+    console.log('Form Submitted');
   }
 
   users: user[] = [{
