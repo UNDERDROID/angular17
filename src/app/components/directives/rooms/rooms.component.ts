@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Rooms, RoomList } from './rooms';
 import { AuthService } from '../../../auth/auth.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-rooms',
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
   standalone: false
 })
 export class RoomsComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private httpClient: HttpClient) { }
   role: string = 'admin';
+
 
   //Hotel Object
   hotel1: Rooms = {
@@ -44,6 +46,17 @@ export class RoomsComponent {
   username: string = this.authService.username;
   logout() {
     this.authService.logout();
+    this.authService.removeAuthToken();
     this.router.navigate(['/home']);
   }
+
+  ngOnInit(): void {
+    // Make a test HTTP request to trigger the interceptor
+    this.httpClient.get('https://jsonplaceholder.typicode.com/posts')
+      .subscribe(response => {
+        console.log('Response:', response);
+      });
+  }
 }
+
+

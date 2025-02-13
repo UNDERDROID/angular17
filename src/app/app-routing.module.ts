@@ -11,7 +11,11 @@ const routes: Routes = [
         path: 'rooms',
         loadChildren: () => import('./components/directives/rooms/rooms.module').then(m => m.RoomsModule),
         canActivate: [AuthGuard]
-    }
+    },
+    {
+        path: 'custom-pipe',
+        loadChildren: () => import('./custom-pipe/custom-pipe.module').then(m => m.CustomPipeModule)
+    },
 ]
 
 @NgModule({

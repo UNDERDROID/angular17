@@ -7,6 +7,8 @@ import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 
@@ -20,9 +22,16 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,  // Specify the AuthInterceptor
+      multi: true  // Allow multiple interceptors to be used
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
